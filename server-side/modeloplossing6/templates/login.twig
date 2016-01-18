@@ -1,0 +1,32 @@
+{% extends 'master.twig' %}
+
+{% set pageTitle = 'Todolist - Please log in'%}
+
+{% block pageContent %}
+
+			<div class="box" id="boxLogin">
+
+				<h2>Please Log In</h2>
+
+				<div class="boxInner">
+					<form action="{{ action }}" method="post">
+						<fieldset>
+							<dl class="clearfix columns">
+								<dt class="column column-26"><label for="username">Username</label></dt>
+								<dd class="column column-46"><input type="text" name="username" id="username" value="{{ username }}" autocomplete="off" /></dd>
+								<dt class="column column-26"><label for="password">Password</label></dt>
+								<dd class="column column-46"><input type="password" name="password" id="password" value="" autocomplete="off" /></dd>
+								<dd class="column column-16 padd-26" id="col-submit">
+									<label for="btnSubmit"><input type="submit" id="btnSubmit" name="btnSubmit" value="Log in" /></label>
+									<input type="hidden" name="moduleAction" id="moduleAction" value="login" />
+								</dd>
+							</dl>
+						</fieldset>
+					</form>
+				</div>
+
+			</div>
+
+{% include 'partials/formerrors.twig' %}
+
+{% endblock %}

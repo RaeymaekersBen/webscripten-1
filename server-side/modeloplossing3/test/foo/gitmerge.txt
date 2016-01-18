@@ -1,0 +1,14 @@
+$ git checkout master
+# Check out your master branch
+
+$ git remote add cameronmcefee git://github.com/cameronmcefee/Spoon-Knife.git
+# Add a new remote named 'cameronmcefee'
+
+$ git fetch cameronmcefee
+# Pull in all the commits from the 'cameronmcefee' remote
+
+$ git merge cameronmcefee/my-branch
+# Merge your master branch into the 'my-branch' branch from the 'cameronmcefee' remote
+
+$ git push origin master
+# Push your newly-merged branch back to GitHub

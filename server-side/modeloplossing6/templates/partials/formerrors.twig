@@ -1,0 +1,10 @@
+{% if formErrors %}
+			<div class="box" id="boxError">
+				<p>One or more errors were encountered:</p>
+				<ul class="errors">
+{% for formError in formErrors %}
+			<li>{{ formError }}</li>
+{% endfor %}
+				</ul>
+			</div>
+{% endif %}

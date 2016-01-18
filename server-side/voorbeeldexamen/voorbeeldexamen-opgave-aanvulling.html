@@ -1,0 +1,143 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<style>
+
+		body {
+			font: normal 14px/1.48 Helvetica, Arial, sans-serif;
+			color: #777;
+			padding: 40px;
+			max-width: 650px;
+			background: #fff;
+		}
+
+		h1, h2, h3, h4, h5 {
+			color: #212121;
+		}
+
+		li, li p {
+			margin: 0;
+		}
+
+		code {
+			color: #444;
+			background: #FAEBD7;
+			font-family: monaco, monospace;
+			font-size: 11px;
+		}
+
+		a, a:link, a:visited {
+			color: #6495ED;
+		}
+
+		a:hover {
+			color: #4169E1;
+		}
+
+		pre {
+			border: 1px solid #ccc;
+			padding: 13px;
+		}
+
+		pre code {
+			color: inherit;
+			background-color: inherit;
+		}
+	</style>
+</head>
+<body>
+<h1>
+<a name="examen-serverside-webscripten" class="anchor" href="#examen-serverside-webscripten"><span class="octicon octicon-link"></span></a>VOORBEELDEXAMEN SERVERSIDE WEBSCRIPTEN 1</h1>
+
+<p>Dit document vormt een aanvulling op hetgeen beschreven in <code>opgave.html</code></p>
+
+<h2>
+<a name="opgavebestanden" class="anchor" href="#opgavebestanden"><span class="octicon octicon-link"></span></a>Opgavebestanden</h2>
+
+<p>Gegeven is één <code>.zip</code> bestand met daarin enkele HTML-templates. We onderscheiden 3 pagina's:</p>
+
+<ul>
+<li>Een overzichtspagina <code>index.html</code> met daarop een lijst van boeken, in oplopende titel-volgorde gesorteerd.</li>
+<li>Een aanmeldformulier <code>login.html</code> waar een gebruiker zich kan aanmelden.</li>
+<li>Een uploadformulier <code>add.html</code> waar een aangemelde gebruiker een cover kan uploaden.</li>
+</ul><p>Van elke pagina werden enkele varianten <em>(met/zonder foutmeldingen, aangemeld/niet aangemeld, met/zonder covers)</em> toegevoegd, doch zijn dit in essentie steeds dezelfde pagina's.</p>
+
+<p>Aanvullend vind je eveneens een <code>dump.sql</code> bestand met daarin een database <code>sws_voorbeeld</code> die de informatie getoond op de statische pagina's omvat.</p>
+
+<p>De database bestaat uit drie tabellen:</p>
+
+<ul>
+<li><p><code>books</code> - Omvat alle boeken op de site, gelinkt aan een user die de cover online plaatste (veld <code>user_id</code>) en een topic (veld <code>topic_id</code>).</p></li>
+<li><p><code>users</code> - Omvat alle gebruikers die covers kunnen online plaatsen. De wachtwoorden (veld <code>password</code>) zijn met <code>password_hash()</code> geëncrypteerd en zijn steeds <code>Azerty123</code>.</p></li>
+<li><p><code>topics</code> - De onderwerpen waartoe een boek kan behoren. Een boek is steeds aan één onderwerp toegekend.</p></li>
+</ul><p>De gebruikte covers vind je in de <code>files/</code> map. Kopieer deze mee in je project. Daarnaast tref je ook nog twee afbeeldingen (een <code>.png</code> en een <code>.jpg</code>) aan die je voor de uploadfunctionaliteit kan gebruiken (deze afbeeldingen hebben reeds de correcte afmetingen).</p>
+
+<h2>
+<a name="uitwerking" class="anchor" href="#uitwerking"><span class="octicon octicon-link"></span></a>Uitwerking</h2>
+
+<p>De uitwerking doe je volgens de instructies in het bestand <code>opgave.html</code> (algemene opgave). In totaal zal je 4 PHP-pagina's moeten maken:</p>
+
+<ul>
+<li>de overzichtspagina <code>index.php</code>
+</li>
+<li>de aanmeldpagina <code>login.php</code>
+</li>
+<li>de afmeldpagina <code>logout.php</code>
+</li>
+<li>de toevoegpagina <code>add.php</code>
+</li>
+</ul><p>Versnij de gegeven HTML-code zodat deze in je <code>.twig</code> files bruikbaar worden. Wijzig echter niks aan de opbouw van de HTML, m.a.w. het is niet toegestaan om HTML-elementen toe te voegen of te verwijderen. De CSS en JavaScript laat je eveneens ongewijzigd. Aan de databasestructuur wordt evenmin geraakt.</p>
+
+<h2>
+<a name="puntenverdeling-functioneel" class="anchor" href="#puntenverdeling-functioneel"><span class="octicon octicon-link"></span></a>Puntenverdeling 'Functioneel'</h2>
+
+<ul>
+<li>
+<p>Overzichtspagina <em>( /4)</em></p>
+
+<ul>
+<li>Weergave boeken (titel, aantal paginas, naam uploader, topic), in oplopende titel-volgorde
+
+<ul>
+<li>De vergroting in de lightbox gebeurt via JavaScript. Alle code hiervoor is voorzien; je hoeft enkel het juiste <code>.js</code> bestand in de HTML-code invoegen.</li>
+</ul>
+</li>
+<li>Weergave topics bovenaan met doorklik + filter op aangeklikte topic</li>
+<li>Merk op: er zijn topics die geen boeken omvatten. Verhinder eveneens het bereik van een niet bestaande topic.</li>
+</ul>
+</li>
+<li>
+<p>Session Control &amp; Cookies <em>( /3)</em></p>
+
+<ul>
+<li>Persistentie/formchecking bij aanmeldformulier
+
+<ul>
+<li>Persisteer eveneens de <code>username</code> via een cookie indien aanmelden gelukt is.</li>
+</ul>
+</li>
+<li>Werk met een PHP-sessie bij geslaagde login. Sluit deze correct af bij uitloggen.</li>
+<li>Toevoegpagina mag enkel bereikbaar zijn mits aanmelden + bewaren <code>user_id</code> bij een nieuwe upload.</li>
+<li>Aanpassing menu rechtsboven op basis van aanmeldstatus</li>
+</ul>
+</li>
+<li>
+<p>Toevoegen afbeelding <em>( /3)</em></p>
+
+<ul>
+<li>Persistentie/formchecking uploadformulier
+
+<ul>
+<li>Vergeet niet het juiste <code>.js</code> bestand in de HTML-code in te voegen.</li>
+<li>Je mag er van uitgaan dat een afbeelding reeds met de juiste afmetingen geupload wordt, herschaling hoef je niet in te bouwen. Je dient uiteraard wel de extensie te controlen.</li>
+</ul>
+</li>
+<li>Invoegen record in databank</li>
+<li>Correct benoemen afbeelding op schijf (steeds <code>files/covers/</code> gevolgd door het <em>insert id</em>, een <code>.</code>, en de extensie van het originele bestand)</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>

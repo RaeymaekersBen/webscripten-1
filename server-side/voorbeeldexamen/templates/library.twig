@@ -1,0 +1,48 @@
+{% extends 'layout.twig' %}
+
+{% set pageTitle = "The Library" %}
+
+{% block pageContent %}
+<!-- content -->
+	<div class="container">
+
+		<!-- books -->
+		<section id="books" class="row">
+            {% if books %}
+            {% for book in books %}
+    			<article id="book-{{ book.id }}" class="book col-xxs-12 col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-lg-3">
+                    <div class="well book-wrapper">
+        				<p><img src="files/covers/{{ book.id }}.{{ book.cover_extension }}" alt="&ldquo;{{ book.booktitle }}&rdquo;, uploaded by {{ book.username }} in {{ book.topictitle }}" title="&ldquo;{{ book.booktitle }}&rdquo;, uploaded by {{ book.username }} in {{ book.topictitle }}" class="book-cover img-responsive" /></p>
+                        <ul class="text-center list-unstyled list-inline book-meta">
+                            <li class="book-meta-uploader"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ book.username }}</li>
+                            <li class="book-meta-topic"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> <a href="index.php?topic=1"> {{ book.topictitle }}</a></li>
+                            <li class="book-meta-numpages"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> {{ book.numpages }}</li>
+                        </ul>
+                    </div>
+    			</article>
+            {% endfor %}
+            {% else %}
+                <p class="well">This topic contains no books</p>
+            {% endif %}
+		</section>
+
+		<!-- image modal ((ab)use bootstrap for lightbox) -->
+		<div class="modal modal-wide fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+      			<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">&hellip;</h4>
+					</div>
+      				<div class="modal-body text-center">
+      					<img src="" alt="" title="" style="max-width: 100%;" />
+      				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+      			</div>
+      		</div>
+      	</div>
+
+	</div>
+{% endblock %}

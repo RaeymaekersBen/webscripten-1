@@ -33,7 +33,7 @@
 	$formErrors = array();
 
 	// Get all topics from database
-	$stmt = $db->prepare('SELECT * FROM topics');
+	$stmt = $db->prepare('SELECT * FROM topics ORDER BY title');
 	$stmt->execute();
 
 	$activetopicid = "sign in";

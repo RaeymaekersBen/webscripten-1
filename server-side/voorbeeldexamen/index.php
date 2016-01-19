@@ -37,7 +37,7 @@
 	$activetopicid = isset($_GET['topic']) ? $_GET['topic'] : '';
 
 	// Get all topics from database
-	$stmt = $db->prepare('SELECT * FROM topics');
+	$stmt = $db->prepare('SELECT * FROM topics ORDER BY title');
 	$stmt->execute();
 
 	$topics = $stmt->fetchAll(PDO::FETCH_ASSOC);

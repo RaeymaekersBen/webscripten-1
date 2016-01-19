@@ -1,0 +1,185 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8" />
+	<style>
+
+		body {
+			font: normal 14px/1.48 Helvetica, Arial, sans-serif;
+			color: #777;
+			padding: 40px;
+			max-width: 650px;
+			margin: 0 auto;
+			background: #fff;
+		}
+
+		h1, h2, h3, h4, h5 {
+			color: #212121;
+		}
+
+		li, li p {
+			margin: 0;
+		}
+
+		code {
+			color: #444;
+			background: #FAEBD7;
+			font-family: monaco, monospace;
+			font-size: 11px;
+		}
+
+		a, a:link, a:visited {
+			color: #6495ED;
+		}
+
+		a:hover {
+			color: #4169E1;
+		}
+
+		pre {
+			border: 1px solid #ccc;
+			padding: 13px;
+		}
+
+		pre code {
+			color: inherit;
+			background-color: inherit;
+		}
+	</style>
+</head>
+<body>
+
+<h1>
+<a name="examen-serverside-webscripten--2015-2016" class="anchor" href="#examen-serverside-webscripten--2015-2016"><span class="octicon octicon-link"></span></a>EXAMEN SERVERSIDE WEBSCRIPTEN<br /> 2015-2016</h1>
+
+<h2>
+<a name="lectoren" class="anchor" href="#lectoren"><span class="octicon octicon-link"></span></a>Lector(en)</h2>
+
+<ul>
+<li>Joris Maervoet</li>
+</ul><h2>
+<a name="timing-en-upload" class="anchor" href="#timing-en-upload"><span class="octicon octicon-link"></span></a>Timing en Upload</h2>
+
+<p>Je krijgt max. 3u de tijd om aan jouw oplossing te werken. Jouw uiteindelijke resultaat upload je via Toledo onder het item 'Examen'.</p>
+
+<p>Na uploaden controleer je zelf jouw inzending op Toledo, verwijder je jouw oplossing uit de wamp/www-folder en teken je de aanwezigheidslijst af. Na toestemming van de aanwezige lector of toezichthouder mag je beschikken.</p>
+
+<h2>
+<a name="groepsverdeling" class="anchor" href="#groepsverdeling"><span class="octicon octicon-link"></span></a>Groepsverdeling</h2>
+
+<p>Er werd een groepsverdeling door de planningsdienst opgesteld.</p>
+
+<h2>
+<a name="opgave" class="anchor" href="#opgave"><span class="octicon octicon-link"></span></a>Opgave</h2>
+
+<h3>
+<a name="algemeen" class="anchor" href="#algemeen"><span class="octicon octicon-link"></span></a>Algemeen</h3>
+
+<p>Gegeven: Op Toledo vind je een <code>.zip</code> met daarin enkele statische <code>.html</code> pagina's (met bijhorende <code>.css</code> en <code>.js</code>). Verder vind je in de <code>.zip</code> een <code>.sql</code> dump van de data die op de pagina's weergegeven wordt.</p>
+
+<p>Gevraagd: Vorm deze statische website om naar een dynamische PHP-website. De gegenereerde HTML, CSS, JS alsook de databankstructuur zelf laat je ongewijzigd.</p>
+
+<ul>
+<li>Vorm de gegeven HTML templates om naar PHP templates. Gebruik een hoofdtemplate met de generieke HTML, aangevuld met subtemplates voor de paginaspecifieke HTML.</li>
+<li>Importeer het SQL-bestand in het lokale MySQL DBMS en gebruik de voorziene gegevens. Schrijf zo efficiënt mogelijke queries (denk <code>INNER JOIN</code>).</li>
+<li>Voorzie persistentie op de formulieren.</li>
+</ul><p>Het examen is <strong>openboek</strong>; m.a.w het is toegelaten om alle presentaties, modeloplossingen, jouw eigen oplossingen en bronnen op het internet (bv. online documentatie) te raadplegen. Communicatie, van welke aard ook, met medestudenten of externen is verboden (bv. social media, vraag posten op forum). </p>
+
+<p>Het <a href="https://cygnus.cc.kuleuven.be/bbcswebdav/pid-17053949-dt-content-rid-61875322_2/xid-61875322_2">huishoudelijk reglement</a> is zoals steeds van toepassing.</p>
+
+<h3>
+<a name="voorbeeld" class="anchor" href="#voorbeeld"><span class="octicon octicon-link"></span></a>Voorbeeld</h3>
+
+<p>Een opgave bestaat meestal uit een overzichtspagina waar enkele items worden opgelijst. Na doorklik kom je op de detailpagina van het aangeklikte item terecht, of op de pagina van een aan het item gerelateerde actie. Bij een item kan extra informatie voorzien worden, zoals foto's of gerelateerde items.</p>
+
+<p>Verder omvat de opgave altijd ook één of meerdere formulieren, die je zal moeten persisteren, en die doorgaans een manipulatie in de database teweeg zullen brengen. Het gebruik van sessions en/of cookies zal worden gespecifieerd in de aanvullende opgave.</p>
+
+<h2>
+<a name="minimumvereisten" class="anchor" href="#minimumvereisten"><span class="octicon octicon-link"></span></a>Minimumvereisten</h2>
+
+<p>Indien aan één van de volgende voorwaarden niet voldaan is, is het resultaat 0:</p>
+
+<ul>
+<li>De gebruikte scriptingtaal is PHP</li>
+<li>De gebruikte template engine is die vanuit de theorie (Twig)</li>
+<li>De gebruikte databankserver is MySQL</li>
+<li>De data wordt effectief uit de databank opgehaald via de <code>PDO_MySQL</code> extensie</li>
+</ul>
+
+<p>Indien er zich grote beveiligingsproblemen <em>(SQL Injectie, Cross-Site Scripting (XSS), Parameter Tampering, Encrypteren van wachtwoorden, Onderdrukken van foutmeldingen)</em> voordoen worden er 4 punten van het eindresultaat afgehouden.</p>
+
+
+<h2>
+<a name="puntenverdeling" class="anchor" href="#puntenverdeling"><span class="octicon octicon-link"></span></a>Puntenverdeling</h2>
+
+<h3>
+<a name="functioneel-cijfer-op-10" class="anchor" href="#functioneel-cijfer-op-10"><span class="octicon octicon-link"></span></a>Functioneel <em>(cijfer op /10)</em>
+</h3>
+
+<p>Dit onderdeel maakt een schatting van hoeveel van de gevraagde functionaliteit uitgevoerd werd. Daarbij gaat het niet zozeer om de kwaliteit maar om de <strong>kwantiteit</strong>: zit het erin of niet?</p>
+
+<p>De precieze verdeling wordt samen met de precieze opgave bekend gemaakt. Het is logisch dat een overzichts- en een detailpagina meer zullen doorwegen dan bvb. een aanmeldformulier</p>
+
+<h3>
+<a name="uitvoering-cijfer-op-10" class="anchor" href="#uitvoering-cijfer-op-10"><span class="octicon octicon-link"></span></a>Uitvoering <em>(cijfer op /10)</em>
+</h3>
+
+<p>Dit onderdeel beoordeelt de <strong>kwaliteit</strong> van het geleverde werk.</p>
+
+<ol>
+<li>Algemeen &amp; Code-organisatie <em>( /1)</em>
+
+<ul>
+<li>Mappenstructuur</li>
+<li>Goed gebruik <code>config.php</code> &amp; <code>functions.php</code>
+</li>
+<li>Opbouw PHP-bestanden</li>
+<li>Parameter tampering</li>
+<li>Onderdrukken foutmeldingen</li>
+</ul>
+</li>
+<li>Werken met Bestanden en Mappen <em>( /1)</em>
+
+<ul>
+<li>Uitlezen bestanden en mappen met de SPL-klassen</li>
+</ul>
+</li>
+<li>Werken met Templates <em>( /3)</em>
+
+<ul>
+<li>Hoofdtemplate + Subtemplates + Partials</li>
+<li>Gebruik Blocks</li>
+<li>Gebruik Template variables</li>
+</ul>
+</li>
+<li>Werken met Databanken <em>( /3)</em>
+
+<ul>
+<li>Verbinding met errorhandling</li>
+<li>Beveiliging tegen SQL Injectie</li>
+<li>Gebruik correcte charset</li>
+<li>CRUD acties</li>
+<li>Efficiënte queries</li>
+</ul>
+</li>
+<li>Inbouwen Persistentie <em>( /2)</em>
+
+<ul>
+<li>Forms &amp; Formchecking</li>
+<li>Sessions</li>
+<li>Cookies</li>
+</ul>
+</li>
+</ol><h3>
+<a name="eindcijfer-cijfer-op-20" class="anchor" href="#eindcijfer-cijfer-op-20"><span class="octicon octicon-link"></span></a>Eindcijfer <em>(cijfer op /20)</em>
+</h3>
+
+<p>Het eindcijfer wordt berekend als het gemiddelde van het meetkundig en rekenkundig gemiddelde van de functionaliteit F en de uitvoering U:</p>
+
+<pre><code>Eindcijfer = ( ((F*U)/5) + (F+U) ) / 2
+</code></pre>
+
+<p>Heb je bijvoorbeeld op functionaliteit 7/10 en op uitvoering 8/10, dan is het eindcijfer 13/20. Heb je op functionaliteit 5/10 en op uitvoering 5/10, dan is je eindcijfer 7,5/20. De redenering achter deze formule is dat je nooit geslaagd kunt zijn als je maar de helft van de functionaliteit hebt, en dat ook nog eens voor de helft verkeerd uitvoert.</p>
+
+</body>
+</html>

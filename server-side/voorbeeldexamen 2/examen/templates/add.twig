@@ -1,0 +1,40 @@
+{% extends 'layout.twig' %}
+{% block content %}
+		<div class="row">
+			<div class="col-xxs-10 col-xxs-offset-1 col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				{% include 'partials/formerrors.twig' %}
+				
+				<form action="{{ PHP_SELF }}" method="post" role="form" enctype="multipart/form-data">
+					<div class="well">
+						<h2>Add book</h2>
+						<div class="form-group">
+							<label for="coverphoto">Cover</label>
+							<input class="filestyle" type="file" name="coverphoto" id="coverphoto" value="" autocomplete="off" placeholder="Select coverphoto" data-icon="false" data-classButtonContainerClass="input-group-btn" data-containerClass="input-group" />
+							<p class="help-block">Only .jpg, .png or .gif</p>
+						</div>
+						<div class="form-group">
+							<label for="title">Title</label>
+							<input class="form-control" type="text" name="title" id="title" value="{{ persist.title }}" autocomplete="off" placeholder="Title of the book" maxlength="255" />
+						</div>
+						<div class="form-group">
+							<label for="title">Number of pages</label>
+							<input class="form-control" type="number" name="numpages" id="numpages" value="{{ persist.number }}" autocomplete="off" placeholder="Number of pages" maxlength="4" />
+						</div>
+						<div class="form-group">
+							<label for="topic_id">topic</label>
+							<select name="topic_id" id="topic_id" class="form-control">
+								<option value="0" {% if persist.topic == 0 %}selected{% endif %}>Choose &hellip;</option>
+								<option value="5" {% if persist.topic == 5 %}selected{% endif %}>DevOps</option>
+								<option value="2" {% if persist.topic == 2 %}selected{% endif %}>JavaScript</option>
+								<option value="3" {% if persist.topic == 3 %}selected{% endif %}>Node</option>
+								<option value="1" {% if persist.topic == 1 %}selected{% endif %}>PHP</option>
+								<option value="4" {% if persist.topic == 4 %}selected{% endif %}>Ruby on Rails</option>
+							</select>
+						</div>
+						<input type="hidden" name="moduleAction" value="add" />
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Add book</button>
+					</div>
+				</form>
+			</div>
+		</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'layout.twig' %}
+{% block content %}
+		<div class="row">
+			<div class="col-xxs-10 col-xxs-offset-1 col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				{% include 'partials/formerrors.twig' %}
+				
+				<form action="{{ PHP_SELF }}" method="post" role="form">
+					<div class="well">
+						<h2 class="form-signin-heading">Please sign in</h2>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input class="form-control" type="text" name="username" id="username" value="{{ persist }}" autocomplete="off" placeholder="Username" />
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input class="form-control" type="password" name="password" id="password" value="" autocomplete="off" placeholder="Password" />
+						</div>
+						<input type="hidden" name="moduleAction" value="login" />
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					</div>
+				</form>
+			</div>
+		</div>
+{% endblock %}

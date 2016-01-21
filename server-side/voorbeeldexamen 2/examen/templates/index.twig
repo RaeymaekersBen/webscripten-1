@@ -1,0 +1,46 @@
+{% extends 'layout.twig' %}
+{% block content %}
+
+		<!-- books -->
+{% if books %}
+		<section id="books" class="row">
+{% for book in books %}
+			<article id="book-{{ book.id }}" class="book col-xxs-12 col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-lg-3">
+		        <div class="well book-wrapper">
+					<p><img src="files/covers/{{ book.id }}.{{ book.cover_extension }}" alt="&ldquo;{{ book.booktitle }}&rdquo;, uploaded by {{ book.username|capitalize }} in {{ book.topictitle }}" title="&ldquo;{{ book.booktitle }}&rdquo;, uploaded by {{ book.username|capitalize }} in {{ book.topictitle }}" class="book-cover img-responsive" /></p>
+		            <ul class="text-center list-unstyled list-inline book-meta">
+		                <li class="book-meta-uploader"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ book.username|capitalize }}</li>
+		                <li class="book-meta-topic"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> <a href="index.php?topic={{ book.topicid }}">{{ book.topictitle }}</a></li>
+		                <li class="book-meta-numpages"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> {{ book.numpages }}</li>
+		            </ul>
+		        </div>
+			</article>
+{% endfor %}
+		</section>
+{% else %}
+<section id="books" class="row">
+	<p class="well">This topic contains no books</p>
+</section>
+{% endif %}
+
+		<!-- image modal ((ab)use bootstrap for lightbox) -->
+		<div class="modal modal-wide fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">&hellip;</h4>
+				</div>
+					<div class="modal-body text-center">
+						<img src="" alt="" title="" style="max-width: 100%;" />
+					</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
+{% block js %}
+<script src="js/index.js"></script>
+{% endblock %}

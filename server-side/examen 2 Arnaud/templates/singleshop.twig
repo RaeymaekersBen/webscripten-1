@@ -1,0 +1,46 @@
+{% extends 'layout.twig' %}
+
+{% set pageTitle = "Shoppen in Kruibeke, Bazel en Rupelmonde" %}
+
+{% block pageContent %}
+<!-- Main -->
+			<div id="main">
+			<!-- One -->
+			<section id="one">
+				<header class="major">
+					<h2>{{ name }}</h2>
+				</header>
+				<ul class="actions">
+					<li><a href="shops.php" class="button special">Alle winkels</a></li>
+					<li><a href="index.php" class="button special">Terug naar hoofdpagina</a></li>
+				</ul>
+
+
+
+				<div class="row">
+					<article class="6u 12u$(xsmall) work-item">
+						<div  class="image fit"><img src="files/images/s{{ id }}.jpg" title="{{ name }}" /></div>
+					</article>
+				</div>
+
+				<div class="table-wrapper">
+					<table class="alt">
+						<tbody>
+						<tr>
+							<td>Adres</td>
+							<td>{{ address }}</td>
+						</tr>
+						<tr>
+							<td>Beschrijving</td>
+							<td>{{ description }}</td>
+						</tr>
+						<tr>
+							<td>Website</td>
+							<td><a href="{{ website }}">{{ website }}</a></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+			</div>
+{% endblock %}

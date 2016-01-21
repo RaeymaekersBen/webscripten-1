@@ -1,0 +1,75 @@
+{% extends 'layout.twig' %}
+
+{% set pageTitle = "Shoppen in Kruibeke, Bazel en Rupelmonde" %}
+
+{% block css %}
+	<link rel="stylesheet" href="js/leaflet/leaflet.css" />
+{% endblock %}
+
+{% block pageContent %}
+<!-- Main -->
+			<!-- Main -->
+			<div id="main">
+					<!-- One -->
+					<section id="one">
+					    <header class="major">
+							<h2>Alle winkels op een rijtje</h2>
+						</header>
+						<ul class="actions">
+							<li><a href="#kaart" class="button special">Alles op een kaartje</a></li>
+							<li><a href="index.php" class="button special">Terug naar hoofdpagina</a></li>
+							{% if user %}
+								<li><a href="add.php" class="button">Winkel toevoegen</a></li>
+							{% endif %}
+						</ul>
+
+						{% for category in categories %}
+							<h2>{{ category.name }}</h2>
+							<div class="row">
+								{% for shop in shops %}
+									{% if shop.category_id == category.id %}
+										<article class="4u 8u$(xsmall) work-item">
+											<a href="?id={{ shop.id }}" class="image fit thumb"><img src="files/images/s{{ shop.id }}.jpg" alt="De Springboon" /></a>
+											{% if shop.id == lastShopId %}
+												<h3>{{ shop.name }} (laatst bezocht)</h3>
+											{% else %}
+												<h3>{{ shop.name }}</h3>
+											{% endif %}
+											<p><a class="icon fa-home"><span class="label">Winkel</span></a>&nbsp;&nbsp;{{ shop.address }}</p>
+										</article>
+									{% endif %}
+								{% endfor %}
+							</div>
+							&nbsp;
+						{% endfor %}
+					</section>
+
+				<!-- Kaart -->
+					<section id="kaart">
+						<h2>Alles op een kaartje</h2>
+						<p></p>
+						<div id="map" style="height: 500px"></div>
+					</section>
+			</div>
+{% endblock %}
+
+{% block js %}
+	<script src="js/leaflet/leaflet.js"></script>
+				<script>
+						var map = L.map('map').setView([51.152, 4.290], 13);
+
+						L.tileLayer("http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+								subdomains: "1234",
+								attribution: "&copy; <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. Tiles Courtesy of <a href='http://www.mapquest.com/'>MapQuest</a> <img src='http://developer.mapquest.com/content/osm/mq_logo.png'>"
+							 }).addTo(map);
+
+						{% for category in categories %}
+							{% for shop in shops %}
+								{% if shop.category_id == category.id %}
+									L.marker([{{ shop.lat }}, {{ shop.lon }}], {icon: L.icon({iconUrl: 'files/icons/{{ category.icon }}', iconAnchor: [16, 36], popupAnchor: [0, -27]})}).addTo(map).bindPopup("<b>{{ shop.name }}</b><br />{{ shop.address }}");
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
+
+	</script>
+{% endblock %}

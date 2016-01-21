@@ -1,0 +1,64 @@
+{% extends 'layout.twig' %}
+
+{% set pageTitle = "Shoppen in Kruibeke, Bazel en Rupelmonde" %}
+
+{% block pageContent %}
+<!-- Main -->
+			<div id="main">
+				<section>
+					<header class="major">
+						<h2>Winkel toevoegen</h2>
+					</header>
+					{% include 'formerrors.twig' %}
+					<form method="post" action="" role="form" enctype="multipart/form-data">
+						<div class="row uniform 50%">
+							<div class="12u$">
+								Kies een .jpg-bestand: &nbsp;&nbsp;
+								<input type="file" name="photo" id="photo" value="" autocomplete="off" placeholder="Selecteer winkelfoto" />
+							</div>
+							<div class="6u 12u$(xsmall)">
+								<input type="text" name="name" id="name" value="{{ name }}" placeholder="Winkelnaam" />
+							</div>
+							<div class="6u$ 12u$(xsmall)">
+								<input type="text" name="address" id="address" value="{{ address }}" placeholder="Adres" />
+							</div>
+							<div class="12u$">
+								<div class="select-wrapper">
+									<select name="category" id="category">
+										<option value="0">- Categorie -</option>
+										{% for category in categories %}
+											{% if category.id == categoryIdFromPost %}
+												<option selected value="{{ category.id }}">
+											{% else %}
+												<option value="{{ category.id }}">
+											{% endif %}
+											{{ category.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+
+							<div class="12u$">
+								<textarea name="description" id="description" placeholder="Omschrijving" rows="6">{{ description }}</textarea>
+							</div>
+							<div class="12u 12u$(xsmall)">
+								<input type="text" name="website" id="website" value="{{ website }}" placeholder="Website" />
+							</div>
+							<div class="6u 12u$(xsmall)">
+								<input type="text" name="lat" id="lat" value="{{ lat }}" placeholder="Latitude" />
+							</div>
+							<div class="6u$ 12u$(xsmall)">
+								<input type="text" name="lon" id="lon" value="{{ lon }}" placeholder="Longitude" />
+							</div>
+							<div class="12u$">
+								<ul class="actions">
+									<li><input type="hidden" name="moduleAction" value="add" />
+										<input type="submit" value="Toevoegen" class="special small" /></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+			</section>
+
+			</div>
+{% endblock %}

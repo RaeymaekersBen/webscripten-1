@@ -1,0 +1,75 @@
+{% extends 'layout.twig' %}
+
+{% set pageTitle = "Shoppen in Kruibeke, Bazel en Rupelmonde" %}
+
+{% block pageContent %}
+
+<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>Shoppen in Kruibeke, Bazel en Rupelmonde</h2>
+						</header>
+						<p>Wist je dat deze drie gemeenten heel wat te bieden hebben als het op winkelen aankomt? Op deze website vind je een overzicht van alle winkels in Kruibeke, Bazel en Rupelmonde.</p>
+						<ul class="actions">
+							<li><a href="shops.php" class="button special">Alle winkels op een rijtje</a></li>
+							<li><a href="#contact" class="button special">Contact</a></li>
+						</ul>
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+						<h2>Acties in de kijker</h2>
+						<div class="row">
+							{% for action in actions %}
+								<article class="6u 12u$(xsmall) work-item">
+									<a href="files/images/a{{ action.id }}.jpg" class="image fit"><img src="files/images/a{{ action.id }}.jpg" title="a{{ action.title }}" /></a>
+									<h3>{{ action.title }}</h3>
+									<p><a class="icon fa-home"><span class="label">Winkel</span></a>&nbsp;&nbsp;{{ action.name }} - {{ action.address}}</p>
+								</article>
+							{% endfor %}
+						</div>
+					</section>
+				<!-- Three -->
+					<section id="contact">
+						<h2>Contact</h2>
+						<p>Een vraagje of opmerking over shoppen in Kruibeke, Bazel en Rupelmonde? Of over deze website? Laat het ons weten via dit contactformulier.</p>
+						<div class="row">
+							<div class="8u 12u$(small)">
+								<form method="post" action="#">
+									<div class="row uniform 50%">
+										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Naam" /></div>
+										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="E-mail" /></div>
+										<div class="12u$"><textarea name="message" id="message" placeholder="Boodschap" rows="4"></textarea></div>
+									</div>
+								</form>
+								<ul class="actions">
+									<li><input type="submit" value="Verzenden" class="special small" /></li>
+								</ul>
+							</div>
+							<div class="4u$ 12u$(small)">
+								<ul class="labeled-icons">
+									<li>
+										<h3 class="icon fa-home"><span class="label">Address</span></h3>
+										Shopping 9150<br />
+										Winkelstraat 666<br />
+										9150 Kruibeke
+									</li>
+									<li>
+										<h3 class="icon fa-mobile"><span class="label">Phone</span></h3>
+										+32 3 774 00 00
+									</li>
+									<li>
+										<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
+										<a href="#">shop@kruibeke.be</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+{% endblock %}

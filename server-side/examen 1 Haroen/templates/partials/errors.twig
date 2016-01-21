@@ -1,0 +1,8 @@
+{% if formErrors %}
+<h4>Opgelet! Één of meerdere fouten opgetreden:</h4>
+<ul style="color: #a32c28;">
+	{% for error in formErrors %}
+	<li>{{ error }}</li>
+	{% endfor %}
+</ul>
+{% endif %}

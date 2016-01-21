@@ -1,0 +1,55 @@
+{% extends 'layout.twig' %}
+{% block styles %}
+<link rel="stylesheet" href="js/leaflet/leaflet.css" />
+{% endblock %}
+{% block content %}
+{% if not shops[id] %}
+<section id="one">
+	<header class="major">
+		<h2>Deze winkel bestaat niet</h2>
+	</header>
+	<ul class="actions">
+		<li><a href="shops.php" class="button special">Alle winkels</a></li>
+		<li><a href="index.php" class="button special">Terug naar hoofdpagina</a></li>
+	</ul>
+</section>
+{% else %}
+<!-- One -->
+<section id="one">
+	<header class="major">
+		<h2>{{shops[id].name}}</h2>
+	</header>
+	<ul class="actions">
+		<li><a href="shops.php" class="button special">Alle winkels</a></li>
+		<li><a href="index.php" class="button special">Terug naar hoofdpagina</a></li>
+	</ul>
+
+
+
+	<div class="row">
+		<article class="6u 12u$(xsmall) work-item">
+			<div  class="image fit"><img src="files/images/s{{id}}.jpg" title="{{shops[id - 1].name}}" /></div>
+		</article>
+	</div>
+
+	<div class="table-wrapper">
+		<table class="alt">
+			<tbody>
+				<tr>
+					<td>Adres</td>
+					<td>{{shops[id - 1].address}}</td>
+				</tr>
+				<tr>
+					<td>Beschrijving</td>
+					<td>{{shops[id - 1].description}}</td>
+				</tr>
+				<tr>
+					<td>Website</td>
+					<td><a href="{{shops[id - 1].website}}">{{shops[id - 1].website}}</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endif %}
+{% endblock %}

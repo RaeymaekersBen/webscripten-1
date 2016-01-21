@@ -1,0 +1,54 @@
+{% extends 'layout.twig' %}
+{% block content %}
+<section>
+	<header class="major">
+		<h2>Winkel toevoegen</h2>
+	</header>
+	{% include 'partials/errors.twig'%}
+	<form method="post" action="" role="form" enctype="multipart/form-data">
+		<div class="row uniform 50%">
+			<div class="12u$">
+				Kies een .jpg-bestand: &nbsp;&nbsp;
+				<input type="file" name="photo" id="photo" value="" autocomplete="off" placeholder="Selecteer winkelfoto" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+				<input type="text" name="name" id="name" value="{{persist.name}}" placeholder="Winkelnaam" />
+			</div>
+			<div class="6u$ 12u$(xsmall)">
+				<input type="text" name="address" id="address" value="{{persist.address}}" placeholder="Adres" />
+			</div>
+			<div class="12u$">
+				<div class="select-wrapper">
+					<select name="category" id="category">
+						<option value="0" {% if persist.category == 0 %}selected{% endif %}>- Categorie -</option>
+						<option value="1" {% if persist.category == 1 %}selected{% endif %}>Babyspulletjes en kinderkleding</option>
+						<option value="2" {% if persist.category == 2 %}selected{% endif %}>Culinaire zaken</option>
+						<option value="3" {% if persist.category == 3 %}selected{% endif %}>Fotografie en toebehoren</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="12u$">
+				<textarea name="description" id="description" placeholder="Omschrijving" rows="6" value="{{persist.description}}"></textarea>
+			</div>
+			<div class="12u 12u$(xsmall)">
+				<input type="text" name="website" id="website" value="{{persist.website}}" placeholder="Website" />
+			</div>
+			<div class="6u 12u$(xsmall)">
+				<input type="text" name="lat" id="lat" value="{{persist.lat}}" placeholder="Latitude" />
+			</div>
+			<div class="6u$ 12u$(xsmall)">
+				<input type="text" name="lon" id="lon" value="{{persist.lon}}" placeholder="Longitude" />
+			</div>
+			<div class="12u$">
+				<ul class="actions">
+					<li>
+						<input type="hidden" name="moduleAction" value="add" />
+						<input type="submit" value="Toevoegen" class="special small" />
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</section>
+{% endblock %}

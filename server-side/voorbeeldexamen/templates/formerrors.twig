@@ -1,0 +1,10 @@
+{% if formErrors %}
+	<div class="bs-callout bs-callout-danger">
+		<p>One or more errors were encountered:</p>
+	<ul>
+		{% for error in formErrors %}
+			<li> {{ error }}</li>
+		{% endfor %}
+	</ul>
+	</div>
+{% endif %}
